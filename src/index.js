@@ -3,7 +3,8 @@ const express = require('express');
 const cors = require('cors');
 const products = require('./routes/products');
 const users = require('./routes/users');
-const orders = require('./routes/orders')
+const orders = require('./routes/orders');
+const cart = require('./routes/cart')
 const { notFound, errorHandler } = require('./middleware/error.js');
 
 const app = express();
@@ -14,7 +15,8 @@ app.get('/health', (_req, res) => res.json({ ok: true, uptime: process.uptime() 
 
 app.use('/products', products);
 app.use('/users', users);
-app.use('/orders', orders)
+app.use('/orders', orders);
+app.use('/cart', cart);
 
 app.use(notFound);
 app.use(errorHandler);
